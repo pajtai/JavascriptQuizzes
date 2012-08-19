@@ -66,6 +66,107 @@ Consider the code below<br/>
 <span style="color: #660066;">alert</span><span style="color: #009900;">&#40;</span>Ask<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">answer</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>     </pre>
 
 <ul>
+    <li>Which of the the three results below will the code produce?
+        <ul>
+            <li>"answer is answer"</li>
+            <li>"question the question"</li>
+            <li>undefined</li>
+        </ul>
+    </li>
+</ul>
+
+<div id="answer">
+    <input type="button" id="show" value="Toggle Program Output" />
+    <ul>
+    </ul>
+</div>
+
+<div id="explanation">
+    <input type="button" id="explain" value="Toggle Explanation" />
+    <ol>
+        <li>First,  constructor functions in Javascript - constructor functions are the  ones after the keyword "new" - implicitly create a new object that is  referred to as "this" in the constructor function. The constructor then  implcitly returns "this" unless another object is explicitly returned.  If you try to return a primitive (like the string "question the  question" in this example), it is simply ignored.</li>
+        <li>Second,  even though the original Ask() didn't use the "new" keyword, Ask() will  return "new Ask()" due to the instanceof check. This is a useful way of  creating constructor functions that work whether or not you remember to  use the "new" keyword.</li>
+        <li>So,  if you wanted to have the code output, "question the question", you  could have returned, "{ 'answer' : 'question the question' }".</li>
+        <li>And, if you wanted to have the code output, undefined, you could have returned, "{ }".</li>
+        <li>This quiz was inspired by Stoyan Stefanov's excellent book, Javascript Patterns.</li>
+    </ol>
+</div>
+    
+
+  
+</body>
+
+
+</html>
+
+!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Quiz 16 - jsFiddle demo by pajtai</title>
+  
+  <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+  <style type='text/css'>
+    
+
+  </style>
+  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+
+$(function() {
+    
+    var Ask = function() {
+        
+        if (! (this instanceof Ask)) {
+            return new Ask();
+        }
+        
+        this.answer = "answer is answer";
+        
+        return "question the question";
+    },
+    gogogo = function() {        
+        $("#answer ul").append("<li>"  + new Ask().answer + "</li>");
+    };
+    $("#answer ul, #explanation ol").hide();
+    $("#show").one("click", function() {
+        gogogo();        
+    });    
+    $("#show").click(function() { $("#answer ol,#answer ul").toggle(); });  
+    $("#explain").click(function() { $("#explanation ol").toggle(); });
+});
+
+//]]>  
+
+</script>
+
+
+</head>
+<body>
+  <h3>Quiz 16:</h3>
+
+Consider the code below<br/>
+
+<pre style="font-family:monospace;"><span style="color: #003366; font-weight: bold;">var</span> Ask <span style="color: #339933;">=</span> <span style="color: #003366; font-weight: bold;">function</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+&nbsp;
+    <span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #339933;">!</span> <span style="color: #009900;">&#40;</span><span style="color: #000066; font-weight: bold;">this</span> <span style="color: #000066; font-weight: bold;">instanceof</span> Ask<span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+        <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #003366; font-weight: bold;">new</span> Ask<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+    <span style="color: #009900;">&#125;</span>
+&nbsp;
+    <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">answer</span> <span style="color: #339933;">=</span> <span style="color: #3366CC;">&quot;answer is answer&quot;</span><span style="color: #339933;">;</span>
+&nbsp;
+    <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #3366CC;">&quot;question the question&quot;</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">&#125;</span><span style="color: #339933;">;</span>
+
+<span style="color: #660066;">alert</span><span style="color: #009900;">&#40;</span>Ask<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span>.<span style="color: #660066;">answer</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>     </pre>
+
+<ul>
     <li>What string will the code produce, and how would you modify the code to return the other string?</li>
 </ul>
 
