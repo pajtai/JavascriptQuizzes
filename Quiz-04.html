@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Quiz 4 - jsFiddle demo by pajtai</title>
+  
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.7.1.js'></script>
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+  <style type='text/css'>
+    
+
+  </style>
+  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+
+(function() {
+    var ferdinand = function(talent, mood) {
+        var length = arguments.length,
+            answer = "<li>The number you seek is " + ferdinand.length + ". </li><li>";
+        switch (this.length) {
+            case 1: 
+                answer += "Sorry, I cannot sing.";
+                break;
+            case 2:
+                answer += "I will now sing Largo al Factotum from Il barbiere di Siviglia!";
+                break;
+            default:
+                answer += "I cannot sing, but I will dance a jig...";
+        }
+        return answer + "</li>";
+    };
+    $(function() {
+        var gogogo = function() {
+            $("#answer ul").append(ferdinand("apple", function() { ferdinand = null; }, 42));
+        };
+        $("#answer ul").hide();
+        $("#show").one("click", function() {
+            gogogo();        
+        });    
+        $("#show").click(function() { $("#answer ul").toggle(); }); 
+    });
+}());
+
+//]]>  
+
+</script>
+
+
+</head>
+<body>
+  <h3>Quiz 4:</h3>
+Consider the code at the bottom of the page... (uses jQuery in places not relating to the question)<br/><br/>
+
+2 lines will be displayed. The first line will reference a number, the second line will proclaim Ferdinand's talent.
+<ol>
+    <li>What is the number?</li>   
+    <li>What, if anything, will Ferdinand do?</li>     
+</ol>
+
+<div id="answer">
+    <input type="button" id="show" value="Toggle Answer" />
+    <ul>  
+        <li>Notes:</li>
+        <li>Each <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function">Function</a> has a length property that contains the number of arguments it expects.</li>
+        <li>Each instance of a Function contains a local <a href="https://developer.mozilla.org/en/JavaScript/Reference/Functions_and_function_scope/arguments">arguments</a> object whose length is the number of
+            arguments the Function instance received.</li>      
+        <li><h3>The Answer:</h3></li>
+    </ul>
+</div> 
+
+<pre style='color:#000000;background:#ffffff;'><span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+    <span style='color:#800000; font-weight:bold; '>var</span> ferdinand <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span>talent<span style='color:#808030; '>,</span> mood<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+        <span style='color:#800000; font-weight:bold; '>var</span> length <span style='color:#808030; '>=</span> <span style='color:#797997; '>arguments</span><span style='color:#808030; '>.</span>length<span style='color:#808030; '>,</span>
+            answer <span style='color:#808030; '>=</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>The number you seek is </span><span style='color:#800000; '>"</span> <span style='color:#808030; '>+</span> ferdinand<span style='color:#808030; '>.</span>length <span style='color:#808030; '>+</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>. &lt;br/></span><span style='color:#800000; '>"</span><span style='color:#800080; '>;</span>
+        <span style='color:#800000; font-weight:bold; '>switch</span> <span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>length<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+            <span style='color:#800000; font-weight:bold; '>case</span> <span style='color:#008c00; '>1</span><span style='color:#800080; '>:</span>
+                answer <span style='color:#808030; '>+=</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>Sorry, I cannot sing.</span><span style='color:#800000; '>"</span><span style='color:#800080; '>;</span>
+                <span style='color:#800000; font-weight:bold; '>break</span><span style='color:#800080; '>;</span>
+            <span style='color:#800000; font-weight:bold; '>case</span> <span style='color:#008c00; '>2</span><span style='color:#800080; '>:</span>
+                answer <span style='color:#808030; '>+=</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>I will now sing Largo al Factotum from Il barbiere di Siviglia!</span><span style='color:#800000; '>"</span><span style='color:#800080; '>;</span>
+                <span style='color:#800000; font-weight:bold; '>break</span><span style='color:#800080; '>;</span>
+            default<span style='color:#800080; '>:</span>
+                answer <span style='color:#808030; '>+=</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>I cannot sing, but I will dance a jig...</span><span style='color:#800000; '>"</span><span style='color:#800080; '>;</span>
+        <span style='color:#800080; '>}</span>
+        <span style='color:#800000; font-weight:bold; '>return</span> answer<span style='color:#800080; '>;</span>
+    <span style='color:#800080; '>}</span><span style='color:#800080; '>;</span>
+    $<span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+        $<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>body</span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>append<span style='color:#808030; '>(</span>ferdinand<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>apple</span><span style='color:#800000; '>"</span><span style='color:#808030; '>,</span> <span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span> ferdinand <span style='color:#808030; '>=</span> <span style='color:#0f4d75; '>null</span><span style='color:#800080; '>;</span> <span style='color:#800080; '>}</span><span style='color:#808030; '>,</span> <span style='color:#008c00; '>42</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>           
+    <span style='color:#800080; '>}</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+<span style='color:#800080; '>}</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+</pre>
+
+<em>Comments, corrections, violent dissent? ==> peter dot ajtai at gmail dot com</em>
+
+  
+</body>
+
+
+</html>
+

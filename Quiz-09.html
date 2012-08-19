@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Quiz 9 - jsFiddle demo by pajtai</title>
+  
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.7.1.js'></script>
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+  <style type='text/css'>
+    #fibin { width: 4em; }
+#theanswer { display: none; }
+
+  </style>
+  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+
+$(function() {
+    var Fibonacci = function() {
+        var numbers = [],
+            fibonacci = function(numIn, index) {      
+                               
+                if (typeof numbers[numIn] === 'number')               
+                    return numbers[numIn];              
+               
+                numbers[numIn] = numIn < 2 ? numIn : fibonacci(numIn - 2, index) + fibonacci(numIn - 1, index);
+                $("#" + index).append(numbers[numIn] + " ");
+                return numbers[numIn];
+            };
+        return fibonacci;
+    };
+    $("#answer ol,#answer ul").hide();
+    $("#show").one("click", function() {
+        Fibonacci()(6, "answer1");        
+    });    
+    $("#show").click(function() { $("#answer ol,#answer ul").toggle(); });  
+    $("#gofib").click(function() {
+        $("#answer2").text("");        
+        Fibonacci()(parseInt($("#fibin").val(),10), "answer2");        
+    });
+    $("#final").click(function() { $("#theanswer").toggle(); });
+});
+//]]>  
+
+</script>
+
+
+</head>
+<body>
+  <h3>Quiz 9:</h3>
+
+<p>The program below - written in Javascript and using the jQuery library - prints out the <a href="http://ualr.edu/lasmoller/fibonacci.html">Fibonacci numbers</a> up to an index of n. Fibonacci numbers are the numbers starting with 0 and 1. After those two, each subsequent number is created by adding the previous two.</p>
+
+<p>The nice thing about this program is that it uses <a href="http://matt.might.net/articles/implementation-of-recursive-fixed-point-y-combinator-in-javascript-for-memoization/">memoization</a> to remember Fibonacci numbers that it has already calculated. This makes it more efficient than "naive" recursion. <a href="http://jsfiddle.net/pajtai/znNRC/">Here</a> is a version of the program that shows when a value is remembered or calculated.</p>
+
+<p>The bad thing about this program is that it has two minor bugs in its printout. What are the bugs?</p>
+
+<div id="answer">
+    <input type="button" id="show" value="Toggle Program Output & Hint" />
+    <ul>
+        <li id="answer1"></li>
+        <li>Hint: Try the program with other values besides 6. Use the input box and button below for testing.</li>
+        <li><input id="fibin" type="text" /><input id="gofib" type="button" value="Enter desired index and click this." /></li>  
+        <li id="answer2"></li>
+        <li><input id="final" type="button" value="Tell me what the bugs are."/></li>
+        <li id="theanswer">If the index is odd, the first two numbers are displayed as "1 0" and not "0 1". Also if an index of 1 is given, only one number is displayed instead of 2. (Also, it shows an answer for negative indices)</li>
+    </ul>
+</div>
+
+<pre style='color:#000000;background:#ffffff;'>$<span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+    <span style='color:#800000; font-weight:bold; '>var</span> Fibonacci <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+        <span style='color:#800000; font-weight:bold; '>var</span> numbers <span style='color:#808030; '>=</span> <span style='color:#808030; '>[</span><span style='color:#808030; '>]</span><span style='color:#808030; '>,</span>
+            fibonacci <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span>numIn<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>      
+                               
+                <span style='color:#800000; font-weight:bold; '>if</span> <span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>typeof</span> numbers<span style='color:#808030; '>[</span>numIn<span style='color:#808030; '>]</span> <span style='color:#808030; '>===</span> <span style='color:#0000e6; '>'number'</span><span style='color:#808030; '>)</span>               
+                    <span style='color:#800000; font-weight:bold; '>return</span> numbers<span style='color:#808030; '>[</span>numIn<span style='color:#808030; '>]</span><span style='color:#800080; '>;</span>              
+               
+                numbers<span style='color:#808030; '>[</span>numIn<span style='color:#808030; '>]</span> <span style='color:#808030; '>=</span> numIn <span style='color:#808030; '>&lt;</span> <span style='color:#008c00; '>2</span> <span style='color:#800080; '>?</span> numIn <span style='color:#800080; '>:</span> fibonacci<span style='color:#808030; '>(</span>numIn <span style='color:#808030; '>-</span> <span style='color:#008c00; '>2</span><span style='color:#808030; '>)</span> <span style='color:#808030; '>+</span> fibonacci<span style='color:#808030; '>(</span>numIn <span style='color:#808030; '>-</span> <span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+                $<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>body</span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>append<span style='color:#808030; '>(</span>numbers<span style='color:#808030; '>[</span>numIn<span style='color:#808030; '>]</span> <span style='color:#808030; '>+</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '> </span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+                <span style='color:#800000; font-weight:bold; '>return</span> numbers<span style='color:#808030; '>[</span>numIn<span style='color:#808030; '>]</span><span style='color:#800080; '>;</span>
+            <span style='color:#800080; '>}</span><span style='color:#800080; '>;</span>
+        <span style='color:#800000; font-weight:bold; '>return</span> fibonacci<span style='color:#800080; '>;</span>
+    <span style='color:#800080; '>}</span><span style='color:#800080; '>;</span>
+    Fibonacci<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>(</span><span style='color:#008c00; '>6</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>   
+<span style='color:#800080; '>}</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+</pre>
+
+  
+</body>
+
+
+</html>
+

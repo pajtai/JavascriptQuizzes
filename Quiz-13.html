@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Quiz 13 - jsFiddle demo by pajtai</title>
+  
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.7.1.js'></script>
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+  <style type='text/css'>
+    
+
+  </style>
+  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+
+$(function() {
+    var gogogo = function() {        
+        $("#answer ul").append("<li>" + ((!NaN+[])[+!{}]) + "</li>");
+    };
+    $("#answer ul, #explanation ol").hide();
+    $("#show").one("click", function() {
+        gogogo();        
+    });    
+    $("#show").click(function() { $("#answer ol,#answer ul").toggle(); });  
+    $("#explain").click(function() { $("#explanation ol").toggle(); });
+});
+    
+
+//]]>  
+
+</script>
+
+
+</head>
+<body>
+  <h3>Quiz 13:</h3>
+
+Consider the code below <br/>
+
+<pre style='color:#000000;background:#ffffff;'>console<span style='color:#808030; '>.</span><span style='color:#800000; font-weight:bold; '>log</span><span style='color:#808030; '>(</span><span style='color:#808030; '>(</span><span style='color:#808030; '>!</span><span style='color:#797997; '>NaN</span><span style='color:#808030; '>+</span><span style='color:#808030; '>[</span><span style='color:#808030; '>]</span><span style='color:#808030; '>)</span><span style='color:#808030; '>[</span><span style='color:#808030; '>+</span>!<span style='color:#800080; '>{</span><span style='color:#800080; '>}</span><span style='color:#808030; '>]</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+</pre>
+
+<ul><li>What will the program output?</li></ul>
+
+<div id="answer">
+    <input type="button" id="show" value="Toggle Program Output" />
+    <ul>
+    </ul>
+</div>
+
+<div id="explanation">
+    <input type="button" id="explain" value="Toggle Explanation" />
+    <ol>
+        <li>("true")[0] is "t"</li>
+        <li>{} is truthy, since any object is.</li>
+        <li>so, !{} is false</li>
+        <li>+!{} transforms false to a Number by using the Unary Plus Operator - the number is 0</li>
+        <li>NaN is falsey, so !NaN is true</li>
+        <li>!NaN+[] concatenates "true" and "", since the String representation of an empty Array is an empty String</li>
+        <li>Throw all of that together and we are accessing the letter at index 0 of the string "true"</li>
+        <li>There are many similar quizes across the internet. For more explanations / questions take a look at <a href="http://stackoverflow.com/a/7202287/186636">this Stackoverflow answer by pimvdb</a> and <a href="http://stackoverflow.com/a/4171028/186636">this Stackoverflow answer by CMS</a>.
+    </ol>
+</div>
+
+
+
+  
+</body>
+
+
+</html>
+

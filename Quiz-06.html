@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Quiz 6 - jsFiddle demo by pajtai</title>
+  
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.7.1.js'></script>
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+  <style type='text/css'>
+    
+
+  </style>
+  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+$(window).load(function(){
+$(function() {
+    var one, two, i, gogogo;
+    
+    Object.prototype.hello = "hi ";
+    Object.prototype.talk  = "interesting ";
+    Object.prototype.bye   = "ciao ";
+    
+    Function.prototype.hello = "hello ";
+    Function.prototype.talk  = "okay ";
+    Function.prototype.bye   = "adios ";
+
+    gogogo = function() {
+        one = function() { return this; };      
+        delete Function.prototype.hello;    
+        two = function(varIn) { return this[varIn]; };
+        one.hello = "g'day ";    
+        $("#answer ul").append("<li>" + one.hello + one.talk + one().bye    + "</li>");
+        $("#answer ul").append("<li>" + two.hello + two.talk + two("hello") + "</li>");    
+        for(i in one) {
+            if (one.hasOwnProperty(i))
+                $("#answer ul").append("<li>" + i + "</li>");        
+        }
+    };
+    $("#answer ul").hide();
+    $("#show").one("click", function() {
+        gogogo();        
+    });    
+    $("#show").click(function() { $("#answer ul").toggle(); });  
+});
+
+});//]]>  
+
+</script>
+
+
+</head>
+<body>
+  <h3>Quiz 6:</h3>
+Consider the code at the bottom of the page... (uses jQuery in places not relating to the question)<br/><br/>
+
+The program will print three lines.
+<ol>
+    <li>What one word will lines one and two share?</li>   
+    <li>What is the word line three will display?</li>
+</ol>
+
+
+<div id="answer">
+    <input type="button" id="show" value="Toggle Program Output" />
+    <ul>
+    </ul>
+</div>
+
+<pre style='color:#000000;background:#ffffff;'>$<span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+    <span style='color:#800000; font-weight:bold; '>var</span> one<span style='color:#808030; '>,</span> two<span style='color:#808030; '>,</span> i<span style='color:#800080; '>;</span>
+    
+    <span style='color:#797997; '>Object</span><span style='color:#808030; '>.</span><span style='color:#797997; '>prototype</span><span style='color:#808030; '>.</span>hello <span style='color:#808030; '>=</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>hi </span><span style='color:#800000; '>"</span><span style='color:#800080; '>;</span>
+    <span style='color:#797997; '>Object</span><span style='color:#808030; '>.</span><span style='color:#797997; '>prototype</span><span style='color:#808030; '>.</span>talk  <span style='color:#808030; '>=</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>interesting </span><span style='color:#800000; '>"</span><span style='color:#800080; '>;</span>
+    <span style='color:#797997; '>Object</span><span style='color:#808030; '>.</span><span style='color:#797997; '>prototype</span><span style='color:#808030; '>.</span>bye   <span style='color:#808030; '>=</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>ciao </span><span style='color:#800000; '>"</span><span style='color:#800080; '>;</span>
+    
+    <span style='color:#797997; '>Function</span><span style='color:#808030; '>.</span><span style='color:#797997; '>prototype</span><span style='color:#808030; '>.</span>hello <span style='color:#808030; '>=</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>hello </span><span style='color:#800000; '>"</span><span style='color:#800080; '>;</span>
+    <span style='color:#797997; '>Function</span><span style='color:#808030; '>.</span><span style='color:#797997; '>prototype</span><span style='color:#808030; '>.</span>talk  <span style='color:#808030; '>=</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>okay </span><span style='color:#800000; '>"</span><span style='color:#800080; '>;</span>
+    <span style='color:#797997; '>Function</span><span style='color:#808030; '>.</span><span style='color:#797997; '>prototype</span><span style='color:#808030; '>.</span>bye   <span style='color:#808030; '>=</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>adios </span><span style='color:#800000; '>"</span><span style='color:#800080; '>;</span>
+
+    one <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span> <span style='color:#800000; font-weight:bold; '>return</span> <span style='color:#800000; font-weight:bold; '>this</span><span style='color:#800080; '>;</span> <span style='color:#800080; '>}</span><span style='color:#800080; '>;</span>  
+    
+    delete <span style='color:#797997; '>Function</span><span style='color:#808030; '>.</span><span style='color:#797997; '>prototype</span><span style='color:#808030; '>.</span>hello<span style='color:#800080; '>;</span>
+    
+    two <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span>varIn<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span> <span style='color:#800000; font-weight:bold; '>return</span> <span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>[</span>varIn<span style='color:#808030; '>]</span><span style='color:#800080; '>;</span> <span style='color:#800080; '>}</span><span style='color:#800080; '>;</span>
+    one<span style='color:#808030; '>.</span>hello <span style='color:#808030; '>=</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>g'day </span><span style='color:#800000; '>"</span><span style='color:#800080; '>;</span>
+    
+    $<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>body</span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>append<span style='color:#808030; '>(</span>one<span style='color:#808030; '>.</span>hello <span style='color:#808030; '>+</span> one<span style='color:#808030; '>.</span>talk <span style='color:#808030; '>+</span> one<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>bye    <span style='color:#808030; '>+</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>&lt;br/></span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+    $<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>body</span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>append<span style='color:#808030; '>(</span>two<span style='color:#808030; '>.</span>hello <span style='color:#808030; '>+</span> two<span style='color:#808030; '>.</span>talk <span style='color:#808030; '>+</span> two<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>hello</span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span> <span style='color:#808030; '>+</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>&lt;br/></span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+    
+    <span style='color:#800000; font-weight:bold; '>for</span><span style='color:#808030; '>(</span>i <span style='color:#800000; font-weight:bold; '>in</span> one<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+        <span style='color:#800000; font-weight:bold; '>if</span> <span style='color:#808030; '>(</span>one<span style='color:#808030; '>.</span>hasOwnProperty<span style='color:#808030; '>(</span>i<span style='color:#808030; '>)</span><span style='color:#808030; '>)</span>
+            $<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>body</span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>append<span style='color:#808030; '>(</span>i<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>        
+    <span style='color:#800080; '>}</span>
+<span style='color:#800080; '>}</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+</pre>
+  
+</body>
+
+
+</html>
+

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Quiz 5 - jsFiddle demo by pajtai</title>
+  
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.7.1.js'></script>
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+  <style type='text/css'>
+    
+
+  </style>
+  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+
+$(function() {
+    var money   = '$00.25 is {ANSWER} pennies.',
+        dollars = /\$([\d]+\.[\d]+)/.exec(money),
+        pennies = dollars[1].replace(".",""),
+        gogogo  = function() {
+            $("#answer ul").append("<li>" + money.replace("{ANSWER}", parseInt(pennies)) + "</li>"); 
+        };
+        $("#answer ul").hide();
+        $("#show").one("click", function() {
+            gogogo();        
+        });    
+        $("#show").click(function() { $("#answer ul").toggle(); });
+});
+
+//]]>  
+
+</script>
+
+
+</head>
+<body>
+  <h3>Quiz 5:</h3>
+Consider the code at the bottom of the page... (uses jQuery in places not relating to the question)<br/><br/>
+
+The program will print one line.
+<ol>
+    <li>Why will the line be incorrect?</li>   
+    <li>What three characters can be added to the program to correct the error?</li>
+    <li>What will the incorrect program print?</li>
+</ol>
+
+
+<div id="answer">
+    <input type="button" id="show" value="Toggle Answer" />
+    <ul>
+        <li>Because the string to be converted to an integer starts with a zero, it is interpreted as base 8, since no radix was provided (no one said we want a base 10 interpretation).</li>
+        <li>,10</li>
+    </ul>
+</div>
+
+<pre style='color:#000000;background:#ffffff;'>$<span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+    <span style='color:#800000; font-weight:bold; '>var</span> money   <span style='color:#808030; '>=</span> <span style='color:#0000e6; '>'$00.25 is {ANSWER} pennies.'</span><span style='color:#808030; '>,</span>
+        dollars <span style='color:#808030; '>=</span><span style='color:#0000e6; '> </span><span style='color:#800000; '>/</span><span style='color:#0f69ff; '>\$</span><span style='color:#808030; '>(</span><span style='color:#808030; '>[</span><span style='color:#797997; '>\d</span><span style='color:#808030; '>]</span><span style='color:#808030; '>+</span><span style='color:#0f69ff; '>\.</span><span style='color:#808030; '>[</span><span style='color:#797997; '>\d</span><span style='color:#808030; '>]</span><span style='color:#808030; '>+</span><span style='color:#808030; '>)</span><span style='color:#800000; '>/</span><span style='color:#808030; '>.</span><span style='color:#800000; font-weight:bold; '>exec</span><span style='color:#808030; '>(</span>money<span style='color:#808030; '>)</span><span style='color:#808030; '>,</span>
+        pennies <span style='color:#808030; '>=</span> dollars<span style='color:#808030; '>[</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>]</span><span style='color:#808030; '>.</span><span style='color:#800000; font-weight:bold; '>replace</span><span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>.</span><span style='color:#800000; '>"</span><span style='color:#808030; '>,</span><span style='color:#800000; '>"</span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+    $<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>body</span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>append<span style='color:#808030; '>(</span>money<span style='color:#808030; '>.</span><span style='color:#800000; font-weight:bold; '>replace</span><span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>{ANSWER}</span><span style='color:#800000; '>"</span><span style='color:#808030; '>,</span> <span style='color:#800000; font-weight:bold; '>parseInt</span><span style='color:#808030; '>(</span>pennies<span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+<span style='color:#800080; '>}</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+</pre>
+
+  
+</body>
+
+
+</html>
+

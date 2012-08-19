@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Quiz 14 - jsFiddle demo by pajtai</title>
+  
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.7.1.js'></script>
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+  <style type='text/css'>
+    
+
+  </style>
+  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+
+$(function() {
+    var gogogo = function() {        
+        var a = 1,
+        fun = function () {
+            return function() { $("#answer ul").append("<li>" + this.a + "</li>"); 
+        };
+        },
+        b = fun();
+        b.a = 5;   
+        b();
+    };
+    $("#answer ul, #explanation ol").hide();
+    $("#show").one("click", function() {
+        gogogo();        
+    });    
+    $("#show").click(function() { $("#answer ol,#answer ul").toggle(); });  
+    $("#explain").click(function() { $("#explanation ol").toggle(); });
+});
+    
+
+//]]>  
+
+</script>
+
+
+</head>
+<body>
+  <h3>Quiz 14:</h3>
+
+Consider the code below <br/>
+
+<pre style='color:#000000;background:#ffffff;'><span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+    <span style='color:#800000; font-weight:bold; '>var</span> a <span style='color:#808030; '>=</span> <span style='color:#008c00; '>1</span><span style='color:#808030; '>,</span>
+        fun <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>function</span> <span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+            <span style='color:#800000; font-weight:bold; '>return</span> <span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span> console<span style='color:#808030; '>.</span><span style='color:#800000; font-weight:bold; '>log</span><span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>a<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span> <span style='color:#800080; '>}</span><span style='color:#800080; '>;</span>
+        <span style='color:#800080; '>}</span><span style='color:#808030; '>,</span>
+        b <span style='color:#808030; '>=</span> fun<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+    b<span style='color:#808030; '>.</span>a <span style='color:#808030; '>=</span> <span style='color:#008c00; '>5</span><span style='color:#800080; '>;</span>   
+    b<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+<span style='color:#800080; '>}</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+</pre>
+
+<ul>
+    <li>What will the program output?</li>
+</ul>
+
+<div id="answer">
+    <input type="button" id="show" value="Toggle Program Output" />
+    <ul>
+    </ul>
+</div>
+
+<div id="explanation">
+    <input type="button" id="explain" value="Toggle Explanation" />
+    <ol>
+        <li>In Javascript functions, "this" refers to the owner of a function.</li>
+        <li>Objects defined in the global scope are owned by "window".</li>
+        <li>The function returned by "fun" was defined without var, so it is in the global scope. It is a function declaration. Functions are Objects.</li>
+        <li>Calling b.apply(b) would output 5</li>
+        <li>Setting "window.a = 7;" before "b();" would output 7</li>
+        <li>Using "console.log(a)" would output 1</li>
+    </ol>
+</div>
+
+
+
+  
+</body>
+
+
+</html>
+

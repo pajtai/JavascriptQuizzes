@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Quiz 7 - jsFiddle demo by pajtai</title>
+  
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.7.1.js'></script>
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+  <style type='text/css'>
+    
+
+  </style>
+  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+
+$(function() {
+    var object1 = {},
+        object2 = [],
+        gogogo = function() {
+            $("#answer ol").append("<li>" + (object1.constructor == Object) + "</li>");
+            $("#answer ol").append("<li>" + (object2.constructor == Array)  + "</li>");
+            $("#answer ol").append("<li>" + (object1 instanceof Object)     + "</li>");
+            $("#answer ol").append("<li>" + (object2 instanceof Array)      + "</li>");
+            $("#answer ol").append("<li>" + (typeof object1) + "</li>");
+            $("#answer ol").append("<li>" + (typeof object2) + "</li>");        
+        };
+    $("#answer ol,#answer ul").hide();
+    $("#show").one("click", function() {
+        gogogo();        
+    });    
+    $("#show").click(function() { $("#answer ol,#answer ul").toggle(); });      
+});
+//]]>  
+
+</script>
+
+
+</head>
+<body>
+  <h3>Quiz 7:</h3>
+Consider the code at the bottom of the page... (uses jQuery in places not relating to the question)<br/><br/>
+
+The program will print six lines. The first four lines will read, "true".
+<ul>
+    <li>What will lines five and six read?</li>   
+</ul>
+
+<div id="answer">
+    <input type="button" id="show" value="Toggle Program Output" />
+    <ul>
+        <li><a href="http://javascript.crockford.com/remedial.html">Some information about type detection in Javascript by Crockford</a></li>
+        <li><a href="http://stackoverflow.com/a/332429/186636">Stackoverflow answer about type detection in Javascript</a></li>
+    </ul>
+    <ol></ol>
+</div>
+
+<pre style='color:#000000;background:#ffffff;'>$<span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+    <span style='color:#800000; font-weight:bold; '>var</span> object1 <span style='color:#808030; '>=</span> <span style='color:#800080; '>{</span><span style='color:#800080; '>}</span><span style='color:#808030; '>,</span>
+        object2 <span style='color:#808030; '>=</span> <span style='color:#808030; '>[</span><span style='color:#808030; '>]</span><span style='color:#800080; '>;</span>
+    
+    $<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>body</span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>append<span style='color:#808030; '>(</span><span style='color:#808030; '>(</span>object1<span style='color:#808030; '>.</span><span style='color:#797997; '>constructor</span> <span style='color:#808030; '>==</span> <span style='color:#797997; '>Object</span><span style='color:#808030; '>)</span> <span style='color:#808030; '>+</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>&lt;br/></span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+    $<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>body</span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>append<span style='color:#808030; '>(</span><span style='color:#808030; '>(</span>object2<span style='color:#808030; '>.</span><span style='color:#797997; '>constructor</span> <span style='color:#808030; '>==</span> <span style='color:#797997; '>Array</span><span style='color:#808030; '>)</span> <span style='color:#808030; '>+</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>&lt;br/></span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+    $<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>body</span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>append<span style='color:#808030; '>(</span><span style='color:#808030; '>(</span>object1 <span style='color:#800000; font-weight:bold; '>instanceof</span> <span style='color:#797997; '>Object</span><span style='color:#808030; '>)</span> <span style='color:#808030; '>+</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>&lt;br/></span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+    $<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>body</span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>append<span style='color:#808030; '>(</span><span style='color:#808030; '>(</span>object2 <span style='color:#800000; font-weight:bold; '>instanceof</span> <span style='color:#797997; '>Array</span><span style='color:#808030; '>)</span> <span style='color:#808030; '>+</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>&lt;br/></span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+    $<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>body</span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>append<span style='color:#808030; '>(</span><span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>typeof</span> object1<span style='color:#808030; '>)</span> <span style='color:#808030; '>+</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>&lt;br/></span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+    $<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>body</span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>append<span style='color:#808030; '>(</span><span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>typeof</span> object2<span style='color:#808030; '>)</span> <span style='color:#808030; '>+</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>&lt;br/></span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+<span style='color:#800080; '>}</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+</pre>
+  
+</body>
+
+
+</html>
+

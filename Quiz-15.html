@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Quiz 15 - jsFiddle demo by pajtai</title>
+  
+  <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+  <style type='text/css'>
+    
+
+  </style>
+  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+
+var x1 = 1;
+x2 = 2;
+
+delete x1;
+delete x2;
+
+
+alert 
+$(function() {
+    var gogogo = function() {        
+        $("#answer ul").append("<li>" + "x1: " + (x1 || "naught") + " x2: " + (window.x2 || "naught")
+ + "</li>");
+        
+    };
+    $("#answer ul, #explanation ol").hide();
+    $("#show").one("click", function() {
+        gogogo();        
+    });    
+    $("#show").click(function() { $("#answer ol,#answer ul").toggle(); });  
+    $("#explain").click(function() { $("#explanation ol").toggle(); });
+});
+
+//]]>  
+
+</script>
+
+
+</head>
+<body>
+  <h3>Quiz 15:</h3>
+
+Consider the code below<br/>
+
+<pre style='color:#000000;background:#ffffff;'><span style='color:#800000; font-weight:bold; '>var</span> x1 <span style='color:#808030; '>=</span> <span style='color:#008c00; '>1</span><span style='color:#800080; '>;</span>
+x2 <span style='color:#808030; '>=</span> <span style='color:#008c00; '>2</span><span style='color:#800080; '>;</span>
+
+delete x1<span style='color:#800080; '>;</span>
+delete x2<span style='color:#800080; '>;</span>
+
+alert <span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>x1: </span><span style='color:#800000; '>"</span> <span style='color:#808030; '>+</span> <span style='color:#808030; '>(</span>x1 <span style='color:#808030; '>||</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>naught</span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span> <span style='color:#808030; '>+</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '> x2: </span><span style='color:#800000; '>"</span> <span style='color:#808030; '>+</span> <span style='color:#808030; '>(</span>x2 <span style='color:#808030; '>||</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>naught</span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+</pre>
+
+<ul>
+    <li>What error will the code produce?</li>
+    <li>What is the word (which will be followed by a period in the code) that can fix this error?</li>
+    <li>Once this fix is made, what would the output of the program be?</li>
+</ul>
+
+<div id="answer">
+    <input type="button" id="show" value="Toggle Fixed Program Output" />
+    <ul>
+    </ul>
+</div>
+
+<div id="explanation">
+    <input type="button" id="explain" value="Toggle Explanation" />
+    <ol>
+        <li>The error will be: "x2 is not defined"</li>
+        <li>The word is "window". This is because, if "var" is ommited, x2 becomes a "global variable" by becoming a property of "window". If you use "var" in the global scope, this does not happen. So omitting "var" is not the same as using "var" in the global scope.</li>
+        <li>To fix the code, you could replace 'x2 || "naught"' with 'window.x2 || "naught"'. This is the program output that is shown if you click on "Toggle Fixed Program Output" above.</li>
+    </ol>
+</div>
+    
+
+  
+</body>
+
+
+</html>
+

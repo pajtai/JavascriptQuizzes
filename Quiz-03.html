@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Quiz 3 - jsFiddle demo by pajtai</title>
+  
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.7.1.js'></script>
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+  <style type='text/css'>
+    #answer {
+    border: 1px solid #00FF00;  
+};
+
+  </style>
+  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+$(window).load(function(){
+(function() {
+    var wait = 200,
+        justWait = function() { 
+          var date1 = new Date(),             
+              date2,
+              msWaited;
+            setTimeout(function() {                
+                $("#answer ul").append("<li>" + (++count) + ": The wait is: " + wait + "</li>");                
+                date2 = new Date();
+                msWaited = date2.getTime() - date1.getTime();
+                $("#answer ul").append("<li>" + (++count) + ": Time spent:" + msWaited + "</li>");                                
+            }, wait);            
+        },
+        count = 0;
+    
+    $(function() {
+        var gogogo = function() {
+            justWait();
+            wait += 200;
+            justWait();
+        };
+        $("#answer ul, #answer ol").hide();
+        $("#show").one("click", function() {
+            gogogo();        
+        });    
+        $("#show").click(function() { $("#answer ul, #answer ol").toggle(); });                 
+    });
+}());
+
+});//]]>  
+
+</script>
+
+
+</head>
+<body>
+  <h3>Quiz 3:</h3>
+Consider the code at the bottom of the page... (uses jQuery in places not relating to the question)<br/><br/>
+
+4 lines will be displayed. 2 for the first "justWait()" and two for the second "justWait()."
+<ol>
+    <li>What will the difference be between lines 1 and 3?</li>   
+    <li>What will the difference be between lines 2 and 4?</li>     
+</ol>
+
+<div id="answer">
+    <input type="button" id="show" value="Toggle Answer" />
+    <ol>
+        <li>Nothing</li>
+        <li>About 200</li>
+    </ol>
+    <ul>
+        <li>Lines of output from the program:</li>
+    </ul>
+</div> 
+
+<pre style='color:#000000;background:#ffffff;'><span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+    <span style='color:#800000; font-weight:bold; '>var</span> wait <span style='color:#808030; '>=</span> <span style='color:#008c00; '>200</span><span style='color:#808030; '>,</span>
+        justWait <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+          <span style='color:#800000; font-weight:bold; '>var</span> date1 <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>new</span> <span style='color:#797997; '>Date</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>,</span>             
+              date2<span style='color:#808030; '>,</span>
+              msWaited<span style='color:#800080; '>;</span>
+            setTimeout<span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>                
+                $<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>body</span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>append<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>The wait is: </span><span style='color:#800000; '>"</span> <span style='color:#808030; '>+</span> wait<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>                
+                date2 <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>new</span> <span style='color:#797997; '>Date</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+                msWaited <span style='color:#808030; '>=</span> date2<span style='color:#808030; '>.</span><span style='color:#800000; font-weight:bold; '>getTime</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#808030; '>-</span> date1<span style='color:#808030; '>.</span><span style='color:#800000; font-weight:bold; '>getTime</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+                $<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>body</span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>append<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>Time spent:</span><span style='color:#800000; '>"</span> <span style='color:#808030; '>+</span> msWaited<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>                                
+            <span style='color:#800080; '>}</span><span style='color:#808030; '>,</span> wait<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>            
+        <span style='color:#800080; '>}</span><span style='color:#800080; '>;</span>
+    
+    $<span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+        justWait<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+        wait <span style='color:#808030; '>+=</span> <span style='color:#008c00; '>200</span><span style='color:#800080; '>;</span>
+        justWait<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+    <span style='color:#800080; '>}</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+<span style='color:#800080; '>}</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+</pre>
+
+  
+</body>
+
+
+</html>
+

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Quiz 11 - jsFiddle demo by pajtai</title>
+  
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.7.1.js'></script>
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+  <style type='text/css'>
+    
+
+  </style>
+  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+
+$(function() {
+    var gogogo = function() {
+        var wait       = 100,
+            count1 = 0, count2 = 0,
+            maxIterations = 3,
+            calculate  = function() { var x, y=[]; for (x=0; x < 1000; ++x) {y[x] = x*y; } },
+            funOneTimeout,
+            funOne = function() {
+                ++count1;                
+                
+                calculate();
+                
+                if (count1 < maxIterations)
+                    funOneTimeout = setTimeout(funOne, wait);
+                else
+                    doneWith("funOne", start1, count1);
+            },
+            funTwo = function() {
+                ++count2;
+                // Dont't do another loop if we're done
+                if (count2 >= maxIterations)
+                    clearInterval(funTwoInterval);
+                
+                calculate();
+                if (count2 >= maxIterations)
+                    doneWith("funTwo", start2, count2);                    
+            },
+            funTwoInterval = setInterval(funTwo, wait),
+            start1, start2,
+            doneWith = function(fun, funStart, loops) {
+                var milliseconds = (new Date) - funStart;
+                $("#answer ul:first").append("<li>" + fun + " finished " + loops + " loops in " + milliseconds + " milliseconds." + "</li>");
+            };     
+            
+            // Start funOne
+            start1 = new Date;
+            funOne();
+        
+            // Start funTwo
+            start2 = new Date;
+            funTwo();
+    };
+    $("#answer ol,#answer ul").hide();
+    $("#show").one("click", function() {
+        gogogo();        
+    });    
+    $("#show").click(function() { $("#answer ul").toggle(); });      
+});
+
+//]]>  
+
+</script>
+
+
+</head>
+<body>
+  <h3>Quiz 11:</h3>
+
+Consider the code at the bottom of the page... <br/><br/>
+
+FunOne does loops with repeated setTimeouts, while FunTwo does the same amount of loops with setInterval. In general does FunOne or FunTwo complete all the loops faster?<br/><br/>
+
+<div id="answer">
+    <input type="button" id="show" value="Toggle Program Output & Answer" />
+    <ul>        
+    </ul>
+    <ul>
+        <li>In general setInterval is faster than chained setTimeouts. The interval for the firing of setInterval is "set in stone." A setTimeout fires a certain amount of time after it is called. The issue is that when you chain setTimeouts you sandwich your calculations in between them, so your setTimeouts will not be called as frequently as the setIntervals. This becomes important with lengthy calculations. There are other performance issue to consider besides speed... <a href="http://stackoverflow.com/a/731625/186636">bobince explains it in detail here.</a></li>
+    </ul>
+</div>
+
+<pre style='color:#000000;background:#ffffff;'><span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+<span style='color:#800000; font-weight:bold; '>var</span> wait          <span style='color:#808030; '>=</span> <span style='color:#008c00; '>100</span><span style='color:#808030; '>,</span>
+    count1        <span style='color:#808030; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#808030; '>,</span> 
+    count2        <span style='color:#808030; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#808030; '>,</span>
+    maxIterations <span style='color:#808030; '>=</span> <span style='color:#008c00; '>3</span><span style='color:#808030; '>,</span>
+    calculate  <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span> <span style='color:#696969; '>/* ... */</span> <span style='color:#800080; '>}</span><span style='color:#808030; '>,</span>
+    funOneTimeout<span style='color:#808030; '>,</span>
+    funOne <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+                <span style='color:#808030; '>++</span>count1<span style='color:#800080; '>;</span>                
+                
+                calculate<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+                
+                <span style='color:#800000; font-weight:bold; '>if</span> <span style='color:#808030; '>(</span>count1 <span style='color:#808030; '>&lt;</span> maxIterations<span style='color:#808030; '>)</span>
+                    funOneTimeout <span style='color:#808030; '>=</span> setTimeout<span style='color:#808030; '>(</span>funOne<span style='color:#808030; '>,</span> wait<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+                <span style='color:#800000; font-weight:bold; '>else</span>
+                    doneWith<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>funOne</span><span style='color:#800000; '>"</span><span style='color:#808030; '>,</span> start1<span style='color:#808030; '>,</span> count1<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+            <span style='color:#800080; '>}</span><span style='color:#808030; '>,</span>
+    funTwo <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+                <span style='color:#808030; '>++</span>count2<span style='color:#800080; '>;</span>                
+                <span style='color:#800000; font-weight:bold; '>if</span> <span style='color:#808030; '>(</span>count2 <span style='color:#808030; '>>=</span> maxIterations<span style='color:#808030; '>)</span>
+                    clearInterval<span style='color:#808030; '>(</span>funTwoInterval<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+                
+                calculate<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+                <span style='color:#800000; font-weight:bold; '>if</span> <span style='color:#808030; '>(</span>count2 <span style='color:#808030; '>>=</span> maxIterations<span style='color:#808030; '>)</span>
+                    doneWith<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>funTwo</span><span style='color:#800000; '>"</span><span style='color:#808030; '>,</span> start2<span style='color:#808030; '>,</span> count2<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>                   
+            <span style='color:#800080; '>}</span><span style='color:#808030; '>,</span>
+    funTwoInterval <span style='color:#808030; '>=</span> setInterval<span style='color:#808030; '>(</span>funTwo<span style='color:#808030; '>,</span> wait<span style='color:#808030; '>)</span><span style='color:#808030; '>,</span>
+    start1<span style='color:#808030; '>,</span> start2<span style='color:#808030; '>,</span>
+    doneWith <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span>fun<span style='color:#808030; '>,</span> funStart<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+        <span style='color:#800000; font-weight:bold; '>var</span> milliseconds <span style='color:#808030; '>=</span> <span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>new</span> <span style='color:#797997; '>Date</span><span style='color:#808030; '>)</span> <span style='color:#808030; '>-</span> funStart<span style='color:#800080; '>;</span>
+        console<span style='color:#808030; '>.</span><span style='color:#800000; font-weight:bold; '>log</span><span style='color:#808030; '>(</span>fun <span style='color:#808030; '>+</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '> finished in </span><span style='color:#800000; '>"</span> <span style='color:#808030; '>+</span> milliseconds <span style='color:#808030; '>+</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '> milliseconds.</span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+    <span style='color:#800080; '>}</span><span style='color:#800080; '>;</span>     
+    
+    <span style='color:#696969; '>// Start funOne</span>
+    start1 <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>new</span> <span style='color:#797997; '>Date</span><span style='color:#800080; '>;</span>
+    funOne<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+
+    <span style='color:#696969; '>// Start funTwo</span>
+    start2 <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>new</span> <span style='color:#797997; '>Date</span><span style='color:#800080; '>;</span>
+    funTwo<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+<span style='color:#800080; '>}</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+</pre>
+
+  
+</body>
+
+
+</html>
+

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Quiz 12 - jsFiddle demo by pajtai</title>
+  
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.7.1.js'></script>
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+  <style type='text/css'>
+    
+
+  </style>
+  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+
+$(function() {
+    var gogogo = function() {
+        var a = function(input) { return (input + 1) || 4; }
+        $("#answer ul").append("<li>" + (a(a(a(a() + (a = 1))))) + "</li>");
+    };
+    $("#answer ul").hide();
+    $("#show").one("click", function() {
+        gogogo();        
+    });    
+    $("#show").click(function() { $("#answer ol,#answer ul").toggle(); });     
+});
+    
+
+//]]>  
+
+</script>
+
+
+</head>
+<body>
+  <h3>Quiz 12:</h3>
+
+Consider the code below <br/>
+
+<pre style='color:#000000;background:#ffffff;'><span style='color:#800000; font-weight:bold; '>var</span> a <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span><span style='color:#797997; '>input</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span> <span style='color:#800000; font-weight:bold; '>return</span> <span style='color:#808030; '>(</span><span style='color:#797997; '>input</span> <span style='color:#808030; '>+</span> <span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span> <span style='color:#808030; '>||</span> <span style='color:#008c00; '>4</span><span style='color:#800080; '>;</span> <span style='color:#800080; '>}</span>
+console<span style='color:#808030; '>.</span><span style='color:#800000; font-weight:bold; '>log</span><span style='color:#808030; '>(</span>a<span style='color:#808030; '>(</span>a<span style='color:#808030; '>(</span>a<span style='color:#808030; '>(</span>a<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#808030; '>+</span> <span style='color:#808030; '>(</span>a <span style='color:#808030; '>=</span> <span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+</pre>
+
+<ul><li>What will the program output?</li></ul>
+
+<div id="answer">
+    <input type="button" id="show" value="Toggle Program Output" />
+    <ul>
+    </ul>
+</div>
+
+
+
+  
+</body>
+
+
+</html>
+

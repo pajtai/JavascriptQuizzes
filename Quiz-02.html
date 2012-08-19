@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Quiz 2 - jsFiddle demo by pajtai</title>
+  
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.7.1.js'></script>
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+  <style type='text/css'>
+    #answer {
+    border: 1px solid #00FF00;  
+};
+
+  </style>
+  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+$(window).load(function(){
+(function() {
+    var answer = 42,
+        getAnswer = function() {
+            $("#answer ul").append("<li>The answer is: " + answer + "</li>");
+            
+            var answer = answer;
+            $("#answer ul").append("<li>The answer is: " + answer + "</li>");            
+        },
+        getOtherAnswer = function() {             
+            $("#answer ul").append("<li>The answer is: " + answer + "</li>"); 
+        };
+    
+    $(function() {
+        var gogogo = function() {
+            getAnswer();
+            getOtherAnswer();
+        };
+    $("#answer ul").hide();
+    $("#show").one("click", function() {
+        gogogo();        
+    });    
+    $("#show").click(function() { $("#answer ul").slideToggle('slow'); });         
+    });
+}());
+
+});//]]>  
+
+</script>
+
+
+</head>
+<body>
+  <h3>Quiz 2:</h3>
+Consider the code at the bottom of the page... (uses jQuery in places not relating to the question)<br/><br/>
+
+3 rows will be displayed. Two for "getAnswer()" and one for "getOtherAnswer()"
+<ul>
+    <li>State the name of what causes the first answer.</li>   
+    <li>What will the 3 answers be?</li>    
+</ul>
+
+<div id="answer"><input type="button" id="show" value="Toggle Answer" /><ul><li><a href="http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting">Hoisting</a></li></ul></div>        
+
+<pre style="color:#000000;background:#ffffff;"><span style="color:#808030; ">(</span><span style="color:#800000; font-weight:bold; ">function</span><span style="color:#808030; ">(</span><span style="color:#808030; ">)</span> <span style="color:#800080; ">{</span>
+    <span style="color:#800000; font-weight:bold; ">var</span> answer <span style="color:#808030; ">=</span> <span style="color:#008c00; ">42</span><span style="color:#808030; ">,</span>
+        getAnswer <span style="color:#808030; ">=</span> <span style="color:#800000; font-weight:bold; ">function</span><span style="color:#808030; ">(</span><span style="color:#808030; ">)</span> <span style="color:#800080; ">{</span>
+            $<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">body</span><span style="color:#800000; ">"</span><span style="color:#808030; ">)</span><span style="color:#808030; ">.</span>append<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">The answer is: </span><span style="color:#800000; ">"</span> <span style="color:#808030; ">+</span> answer <span style="color:#808030; ">+</span> <span style="color:#800000; ">"</span><span style="color:#0000e6; ">&lt;br/&gt;</span><span style="color:#800000; ">"</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span>
+            
+            <span style="color:#800000; font-weight:bold; ">var</span> answer <span style="color:#808030; ">=</span> answer<span style="color:#800080; ">;</span>
+            $<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">body</span><span style="color:#800000; ">"</span><span style="color:#808030; ">)</span><span style="color:#808030; ">.</span>append<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">The answer is: </span><span style="color:#800000; ">"</span> <span style="color:#808030; ">+</span> answer <span style="color:#808030; ">+</span> <span style="color:#800000; ">"</span><span style="color:#0000e6; ">&lt;br/&gt;</span><span style="color:#800000; ">"</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span>           
+        <span style="color:#800080; ">}</span><span style="color:#808030; ">,</span>
+        getOtherAnswer <span style="color:#808030; ">=</span> <span style="color:#800000; font-weight:bold; ">function</span><span style="color:#808030; ">(</span><span style="color:#808030; ">)</span> <span style="color:#800080; ">{</span>            
+            $<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">body</span><span style="color:#800000; ">"</span><span style="color:#808030; ">)</span><span style="color:#808030; ">.</span>append<span style="color:#808030; ">(</span><span style="color:#800000; ">"</span><span style="color:#0000e6; ">The answer is: </span><span style="color:#800000; ">"</span> <span style="color:#808030; ">+</span> answer <span style="color:#808030; ">+</span> <span style="color:#800000; ">"</span><span style="color:#0000e6; ">&lt;br/&gt;</span><span style="color:#800000; ">"</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span>
+        <span style="color:#800080; ">}</span><span style="color:#800080; ">;</span>
+    
+    $<span style="color:#808030; ">(</span><span style="color:#800000; font-weight:bold; ">function</span><span style="color:#808030; ">(</span><span style="color:#808030; ">)</span> <span style="color:#800080; ">{</span>
+        getAnswer<span style="color:#808030; ">(</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span>
+        getOtherAnswer<span style="color:#808030; ">(</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span>
+    <span style="color:#800080; ">}</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span>
+<span style="color:#800080; ">}</span><span style="color:#808030; ">(</span><span style="color:#808030; ">)</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span>
+</pre>
+
+  
+</body>
+
+
+</html>
+

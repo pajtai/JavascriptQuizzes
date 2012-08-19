@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Quiz 10 - jsFiddle demo by pajtai</title>
+  
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.7.1.js'></script>
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+  <style type='text/css'>
+    
+
+  </style>
+  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+
+$(function() {
+    var gogogo = function() {
+        var a = [];
+        a[-3] = 1;
+        a[3]  = 1;
+        $("#answer ul:first").append("<li>" + (a.length + a[-3] + a[3]) + "</li>");
+    };
+    $("#answer ol,#answer ul").hide();
+    $("#show").one("click", function() {
+        gogogo();        
+    });    
+    $("#show").click(function() { $("#answer ul").toggle(); });       
+});
+
+//]]>  
+
+</script>
+
+
+</head>
+<body>
+  <h3>Quiz 10:</h3>
+
+
+Consider the code at the bottom of the page...<br/><br/>
+
+What output will the program produce?
+
+<div id="answer">
+    <input type="button" id="show" value="Toggle Program Output" />
+    <ul>        
+    </ul>
+    <ul>
+        <li>The "length" of a Javascript array is the largest positive integer index plus one. So the program outputs 4 + 1 + 1 which is 6</li>
+    </ul>
+</div>
+
+<pre style='color:#000000;background:#ffffff;'><span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+    <span style='color:#800000; font-weight:bold; '>var</span> a <span style='color:#808030; '>=</span> <span style='color:#808030; '>[</span><span style='color:#808030; '>]</span><span style='color:#800080; '>;</span>
+    a<span style='color:#808030; '>[</span><span style='color:#808030; '>-</span><span style='color:#008c00; '>3</span><span style='color:#808030; '>]</span> <span style='color:#808030; '>=</span> <span style='color:#008c00; '>1</span><span style='color:#800080; '>;</span>
+    a<span style='color:#808030; '>[</span><span style='color:#008c00; '>3</span><span style='color:#808030; '>]</span>  <span style='color:#808030; '>=</span> <span style='color:#008c00; '>1</span><span style='color:#800080; '>;</span>
+    console<span style='color:#808030; '>.</span><span style='color:#800000; font-weight:bold; '>log</span><span style='color:#808030; '>(</span>a<span style='color:#808030; '>.</span>length <span style='color:#808030; '>+</span> a<span style='color:#808030; '>[</span><span style='color:#808030; '>-</span><span style='color:#008c00; '>3</span><span style='color:#808030; '>]</span> <span style='color:#808030; '>+</span> a<span style='color:#808030; '>[</span><span style='color:#008c00; '>3</span><span style='color:#808030; '>]</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+<span style='color:#800080; '>}</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+</pre>
+
+
+
+  
+</body>
+
+
+</html>
+

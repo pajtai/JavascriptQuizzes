@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Quiz 1 - jsFiddle demo by pajtai</title>
+  
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.7.1.js'></script>
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+  <style type='text/css'>
+    #answer {
+    border: 1px solid #00FF00;
+    
+};
+
+  </style>
+  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+$(window).load(function(){
+(function(){
+
+    var i = 1,        
+        closure = function(valueIn, objIn) {
+            var  count = i,
+                 value = valueIn,                 
+                 obj   = objIn;
+            return function() {
+                return "count is: "     + count      + " " +
+                       "value is: "     + value      + " " +
+                       "obj.count is: " + obj.count  + "<br/>";
+            };   
+        };
+$(function() {
+    var gogogo = function() {
+        var one, two, three, theObject = {};
+        
+        one   = closure(i++, theObject);
+        two   = closure(++i, theObject);
+        three = closure(i + 1, theObject);    
+        
+        $("#answer ul").append("<li>" + one()   + "</li>"); 
+        $("#answer ul").append("<li>" + two()   + "</li>");
+        $("#answer ul").append("<li>" + three() + "</li>");
+        theObject.count = 5;
+        $("#answer ul").append("<li>" + one()   + "</li>");
+        $("#answer ul").append("<li>" + two()   + "</li>");
+        $("#answer ul").append("<li>" + three() + "</li>");
+    };
+    $("#answer ul").hide();
+    $("#show").one("click", function() {
+        gogogo();        
+    });    
+    $("#show").click(function() { $("#answer ul").slideToggle('slow'); });   
+});
+}());
+});//]]>  
+
+</script>
+
+
+</head>
+<body>
+  <h3>Quiz 1</h3>
+Consider the code at the bottom of the page...<br/><br/>
+
+6 rows will be displayed. One for each execution of the methods returned by the closure.
+<ul>
+    <li>How many times will "obj.count" be undefined?</li>
+    <li>How many times wil the value of "count" and "value" be equal on a single line?</li>
+    <li>Will the values for "count" be the same for runs 1&amp;4, 2&amp;5, and 3&amp;6?</li>
+     <li>Will the values for "obj.count" be the same for runs 1&amp;4, 2&amp;5, and 3&amp;6?</li>
+</ul>
+
+<div id="answer"><input type="button" id="show" value="Toggle Answer" /><ul></ul></div>        
+
+<pre style='color:#000000;background:#ffffff;'><span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>{</span>
+    <span style='color:#800000; font-weight:bold; '>var</span> i <span style='color:#808030; '>=</span> <span style='color:#008c00; '>1</span><span style='color:#808030; '>,</span>        
+        closure <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span>valueIn<span style='color:#808030; '>,</span> objIn<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+            <span style='color:#800000; font-weight:bold; '>var</span>  count <span style='color:#808030; '>=</span> i<span style='color:#808030; '>,</span>
+                 value <span style='color:#808030; '>=</span> valueIn<span style='color:#808030; '>,</span>                 
+                 obj   <span style='color:#808030; '>=</span> objIn<span style='color:#800080; '>;</span>
+            <span style='color:#800000; font-weight:bold; '>return</span> <span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+                <span style='color:#800000; font-weight:bold; '>return</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>count is: </span><span style='color:#800000; '>"</span>     <span style='color:#808030; '>+</span> count      <span style='color:#808030; '>+</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '> </span><span style='color:#800000; '>"</span> <span style='color:#808030; '>+</span>
+                       <span style='color:#800000; '>"</span><span style='color:#0000e6; '>value is: </span><span style='color:#800000; '>"</span>     <span style='color:#808030; '>+</span> value      <span style='color:#808030; '>+</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '> </span><span style='color:#800000; '>"</span> <span style='color:#808030; '>+</span>
+                       <span style='color:#800000; '>"</span><span style='color:#0000e6; '>obj.count is: </span><span style='color:#800000; '>"</span> <span style='color:#808030; '>+</span> obj<span style='color:#808030; '>.</span>count  <span style='color:#808030; '>+</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>&lt;br/></span><span style='color:#800000; '>"</span><span style='color:#800080; '>;</span>
+            <span style='color:#800080; '>}</span><span style='color:#800080; '>;</span>   
+        <span style='color:#800080; '>}</span><span style='color:#800080; '>;</span>
+    $<span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span>
+        <span style='color:#800000; font-weight:bold; '>var</span> one<span style='color:#808030; '>,</span> two<span style='color:#808030; '>,</span> three<span style='color:#808030; '>,</span> theObject <span style='color:#808030; '>=</span> <span style='color:#800080; '>{</span><span style='color:#800080; '>}</span><span style='color:#800080; '>;</span>
+        
+        one   <span style='color:#808030; '>=</span> closure<span style='color:#808030; '>(</span>i<span style='color:#808030; '>++</span><span style='color:#808030; '>,</span> theObject<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+        two   <span style='color:#808030; '>=</span> closure<span style='color:#808030; '>(</span><span style='color:#808030; '>++</span>i<span style='color:#808030; '>,</span> theObject<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+        three <span style='color:#808030; '>=</span> closure<span style='color:#808030; '>(</span>i <span style='color:#808030; '>+</span> <span style='color:#008c00; '>1</span><span style='color:#808030; '>,</span> theObject<span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>    
+        
+        $<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>body</span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>append<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>1: </span><span style='color:#800000; '>"</span> <span style='color:#808030; '>+</span> one<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+        $<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>body</span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>append<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>2: </span><span style='color:#800000; '>"</span> <span style='color:#808030; '>+</span> two<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+        $<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>body</span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>append<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>3: </span><span style='color:#800000; '>"</span> <span style='color:#808030; '>+</span> three<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+        theObject<span style='color:#808030; '>.</span>count <span style='color:#808030; '>=</span> <span style='color:#008c00; '>5</span><span style='color:#800080; '>;</span>
+        $<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>body</span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>append<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>4: </span><span style='color:#800000; '>"</span> <span style='color:#808030; '>+</span> one<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+        $<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>body</span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>append<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>5: </span><span style='color:#800000; '>"</span> <span style='color:#808030; '>+</span> two<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+        $<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>body</span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>append<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>6: </span><span style='color:#800000; '>"</span> <span style='color:#808030; '>+</span> three<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+    <span style='color:#800080; '>}</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+<span style='color:#800080; '>}</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+</pre>
+
+  
+</body>
+
+
+</html>
+
