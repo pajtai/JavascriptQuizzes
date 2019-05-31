@@ -1,5 +1,7 @@
 These are the JS quizzes that I have up on JSFiddle.  
 
+The answers are hidden behind a toggle.
+
 Browsable list of quizzes is here:  
 http://netlumination.com/blog/javascript-quizzes  
 
