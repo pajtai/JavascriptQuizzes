@@ -11,5 +11,5 @@ http://jsfiddle.net/user/pajtai/fiddles/
 ```bash
 git clone https://github.com/pajtai/JavascriptQuizzes.git
 cd JavascriptQuizzes
-(sleep 1; open http://localhost:8000)&; python -m SimpleHTTPServer
+( sleep 1 && open http://localhost:8000 ) &; python -m SimpleHTTPServer
 ```
